@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body, #root {
+    @apply min-h-screen;
+  }
+  
+  body {
+    @apply text-white bg-gray-900 transition-colors duration-300 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  /* Improve mobile tap targets */
+  button, a {
+    @apply cursor-pointer min-h-[44px] min-w-[44px];
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Improve form element accessibility */
+  input, select, textarea {
+    @apply appearance-none;
+  }
+
+  /* Better focus states */
+  :focus-visible {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-gray-900;
+  }
+}
+
+@layer components {
+  .aspect-w-16 {
+    position: relative;
+    padding-bottom: 56.25%;
+  }
+
+  .aspect-w-16 > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  /* Mobile-first responsive text */
+  .text-responsive {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+
+  /* Mobile-optimized buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold transition-all duration-200 
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+  }
+
+  .btn-secondary {
+    @apply btn border border-blue-400 text-blue-400 hover:bg-blue-600/10 focus:ring-blue-400;
+  }
+
+  /* Mobile-optimized cards */
+  .card {
+    @apply bg-white/10 backdrop-blur-sm rounded-xl p-6 transition-all duration-300
+           hover:transform hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  /* Mobile-optimized inputs */
+  .input {
+    @apply w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-2 text-white
+           placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent
+           transition-all duration-200;
+  }
+}
+
+/* DayPicker styles */
+.rdp {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: rgb(37 99 235);
+  --rdp-background-color: rgb(37 99 235 / 0.1);
+  --rdp-accent-color-dark: rgb(37 99 235);
+  --rdp-background-color-dark: rgb(37 99 235 / 0.2);
+  --rdp-outline: 2px solid var(--rdp-accent-color);
+  --rdp-outline-selected: 2px solid var(--rdp-accent-color);
+  margin: 0;
+}
+
+.rdp-day_selected:not([disabled]) { 
+  color: white;
+  background-color: var(--rdp-accent-color);
+}
+
+.rdp-day_selected:hover:not([disabled]) {
+  background-color: var(--rdp-accent-color-dark);
+}
+
+/* Loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.03) 25%, 
+    rgba(255,255,255,0.08) 37%, 
+    rgba(255,255,255,0.03) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+/* Improved mobile menu */
+.mobile-menu {
+  @apply fixed inset-0 z-50 bg-gray-900/95 backdrop-blur-sm transform transition-all duration-300;
+}
+
+.mobile-menu-enter {
+  @apply translate-x-full;
+}
+
+.mobile-menu-enter-active {
+  @apply translate-x-0;
+}
+
+.mobile-menu-exit {
+  @apply translate-x-0;
+}
+
+.mobile-menu-exit-active {
+  @apply translate-x-full;
+}

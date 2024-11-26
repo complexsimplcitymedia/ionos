@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://kustomautowrx.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Common directories to disallow
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*?*
+
+# Allow important assets
+Allow: /sitemap.xml
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /fonts/
